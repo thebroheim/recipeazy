@@ -1,0 +1,16 @@
+html {
+    background-color: black;
+    color: white;
+}
+
+.recipe-grid {
+    display: flex;
+    gap: 20px;
+}
+
+.recipe-card {
+    display: flex;
+    flex-direction: column;
+    padding: 5px;
+    border: solid red;
+}
