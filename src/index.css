@@ -12,5 +12,11 @@ html {
     display: flex;
     flex-direction: column;
     padding: 5px;
-    border: solid red;
+    border: solid white;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    width: 30%;
 }

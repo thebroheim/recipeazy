@@ -5,6 +5,13 @@ const RecipeCard = ({recipe}) => {
     <div className ="recipe-card">
         <h3>{recipe.title}</h3>
         <p>Prep: {recipe.prepTime}</p>
+        <p>Cook: {recipe.cookTime}</p>
+        <ul>
+            {recipe.ingredients.map((ingredient, index) => (
+                <li key={index}>{ingredient.name} : {ingredient.quantity} {ingredient.unit}</li>
+            ))}
+
+        </ul>
         <div className = "recipe-steps">
             <h4>Instructions</h4>
             <ol>
