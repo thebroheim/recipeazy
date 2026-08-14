@@ -1,6 +1,6 @@
 html {
-    background-color: black;
-    color: white;
+     /* background-color: black;
+    color: white; */
 }
 
 .recipe-grid {
@@ -13,10 +13,11 @@ html {
     flex-direction: column;
     padding: 5px;
     border: solid white;
+    width: 400px;
 }
 
 form {
     display: flex;
     flex-direction: column;
-    width: 30%;
+    width: 50%;
 }

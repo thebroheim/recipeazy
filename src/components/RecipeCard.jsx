@@ -6,6 +6,7 @@ const RecipeCard = ({recipe}) => {
         <h3>{recipe.title}</h3>
         <p>Prep: {recipe.prepTime}</p>
         <p>Cook: {recipe.cookTime}</p>
+        <h4>Ingredients</h4>
         <ul>
             {recipe.ingredients.map((ingredient, index) => (
                 <li key={index}>{ingredient.name} : {ingredient.quantity} {ingredient.unit}</li>

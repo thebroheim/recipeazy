@@ -7,7 +7,7 @@ const [formData, setFormData] = useState({
   title: "",
   prepTime: "",
   cookTime: "",
-  ingredients: [""],
+  ingredients: [{ name: '', quantity: '', unit: '', notes:'' },],
   instructions: [""]
 });
 
@@ -16,17 +16,17 @@ function handleChange(e) {
   setFormData(prev => ({ ...prev, [name]: value }));
 }
 
-function handleIngredientsChange(index, value){
+function handleIngredientsChange(index, field, value){
   setFormData(prev => {
     const updatedIngredients = [...prev.ingredients];
-    updatedIngredients[index] = value;
+    updatedIngredients[index] = {...updatedIngredients[index], [field]: value};
     return { ...prev, ingredients: updatedIngredients };
   });
 }
 
 function handleAddIngredient(){
     setFormData(prev => {
-        return {...prev, ingredients: [...prev.ingredients, ""]};
+        return {...prev, ingredients: [...prev.ingredients, { name: '', quantity: '', unit: '', notes:'' }]};
     });
 }
 
@@ -51,7 +51,7 @@ function handleSubmit(e) {
     title: "",
     prepTime: "",
     cookTime: "",
-    ingredients: [""],
+    ingredients: [{ name: '', quantity: '', unit: '', notes:'' }],
     instructions: [""],
     
   }); // clear the input after submit
@@ -68,8 +68,13 @@ function handleSubmit(e) {
         <input name="cookTime" value={formData.cookTime} onChange = {handleChange} type="text"/>
 
         <label>Ingredients</label>
-                {formData.ingredients.map((ingredient, key)=>{
-            return <input name="ingredients" key={key} value={ingredient} onChange = {(e) => handleIngredientsChange(key, e.target.value)} type="text"/>
+                {formData.ingredients.map((ingredient, index)=>{
+            return <div className="ingredients-input">
+            <input name="ingredients" key={index} placeholder= "name" value={ingredient.name} onChange = {(e) => handleIngredientsChange(index, "name",e.target.value)} type="text"/>
+            <input name="ingredients" key={index} placeholder= "quantity" value={ingredient.quantity} onChange = {(e) => handleIngredientsChange(index, "quantity", e.target.value)} type="text"/>
+            <input name="ingredients" key={index} placeholder= "unit" value={ingredient.unit} onChange = {(e) => handleIngredientsChange(index, "unit", e.target.value)} type="text"/>
+            <input name="ingredients" key={index} placeholder= "notes" value={ingredient.notes} onChange = {(e) => handleIngredientsChange(index, "notes", e.target.value)} type="text"/>
+            </div>
         })}
         <button type= "button" onClick={handleAddIngredient}>Add Ingredient</button>
         
