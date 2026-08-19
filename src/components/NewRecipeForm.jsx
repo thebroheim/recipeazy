@@ -1,7 +1,11 @@
 import React from "react"
 import { useState } from 'react';
 
-const RecipeForm = ({onAddRecipe}) => {
+const RecipeForm = ({onAddRecipe, allIngredientNames}) => {
+
+const unitsOfMeasurement = [
+  "Cup","Piece", "Gram", "tbsp", "tsp"
+]
 
 const [formData, setFormData] = useState({
   title: "",
@@ -68,12 +72,23 @@ function handleSubmit(e) {
         <input name="cookTime" value={formData.cookTime} onChange = {handleChange} type="text"/>
 
         <label>Ingredients</label>
+        <datalist id="ingredient-names">
+          {allIngredientNames.map(name => {
+            return <option key={name} value={name}/>
+          })}
+        </datalist>
+        <datalist id="units">
+          {unitsOfMeasurement.map(name => {
+            return <option key={name} value={name}/>
+          })}
+        </datalist>
                 {formData.ingredients.map((ingredient, index)=>{
-            return <div className="ingredients-input">
-            <input name="ingredients" key={index} placeholder= "name" value={ingredient.name} onChange = {(e) => handleIngredientsChange(index, "name",e.target.value)} type="text"/>
-            <input name="ingredients" key={index} placeholder= "quantity" value={ingredient.quantity} onChange = {(e) => handleIngredientsChange(index, "quantity", e.target.value)} type="text"/>
-            <input name="ingredients" key={index} placeholder= "unit" value={ingredient.unit} onChange = {(e) => handleIngredientsChange(index, "unit", e.target.value)} type="text"/>
-            <input name="ingredients" key={index} placeholder= "notes" value={ingredient.notes} onChange = {(e) => handleIngredientsChange(index, "notes", e.target.value)} type="text"/>
+            return <div className="ingredients-input" key={index}>
+            
+            <input list="ingredient-names" name="ingredients" placeholder= "name" value={ingredient.name} onChange = {(e) => handleIngredientsChange(index, "name",e.target.value)} type="text"/>
+            <input name="ingredients" placeholder= "quantity" value={ingredient.quantity} onChange = {(e) => handleIngredientsChange(index, "quantity", e.target.value)} type="text"/>
+            <input list= "units" name="ingredients" placeholder= "unit" value={ingredient.unit} onChange = {(e) => handleIngredientsChange(index, "unit", e.target.value)} type="text"/>
+            <input name="ingredients" placeholder= "notes" value={ingredient.notes} onChange = {(e) => handleIngredientsChange(index, "notes", e.target.value)} type="text"/>
             </div>
         })}
         <button type= "button" onClick={handleAddIngredient}>Add Ingredient</button>

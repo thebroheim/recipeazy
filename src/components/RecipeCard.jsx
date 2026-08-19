@@ -9,7 +9,7 @@ const RecipeCard = ({recipe}) => {
         <h4>Ingredients</h4>
         <ul>
             {recipe.ingredients.map((ingredient, index) => (
-                <li key={index}>{ingredient.name} : {ingredient.quantity} {ingredient.unit}</li>
+                <li key={index}>{ingredient.name} : {ingredient.quantity} {ingredient.unit} - {ingredient.notes}</li>
             ))}
 
         </ul>
