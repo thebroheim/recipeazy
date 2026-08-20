@@ -11,10 +11,27 @@ function App() {
 
   const [recipes, setRecipes] = useState(initialRecipes)
 
+  const [selectedIngredients, setSelectedIngredients] = useState(["Chicken"])
+
   const allIngredientNames = useMemo(() => {
     const names = recipes.flatMap(recipe => recipe.ingredients.map(ingredient => ingredient.name));
     return [...new Set(names)];
   }, [recipes])
+
+  const filteredRecipes = useMemo(() => {
+    const selectedSet = new Set(selectedIngredients)
+
+    const scored = recipes.map(recipe => {
+      const matchCount = recipe.ingredients.filter(ing => selectedSet.has(ing.name)).length;
+      const score = matchCount / recipe.ingredients.length
+      return {...recipe, score}
+    })
+
+    scored.sort((a, b) => b.score - a.score);
+    return scored
+  
+
+}, [recipes, selectedIngredients]);
 
   function addRecipe(newRecipe) {
     setRecipes(prevRecipes => [...prevRecipes, newRecipe]);
@@ -27,7 +44,7 @@ function App() {
         <NewRecipeForm onAddRecipe = {addRecipe} allIngredientNames ={allIngredientNames}/>
       </div>
       <div className="recipe-grid">
-        {recipes.map((item) => (
+        {filteredRecipes.map((item) => (
           <RecipeCard
             key={item.id}
             recipe={item}
