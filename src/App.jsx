@@ -6,6 +6,7 @@ import './App.css'
 import RecipeCard from './components/RecipeCard'
 import NewRecipeForm from './components/NewRecipeForm'
 import initialRecipes from './data/recipes'
+import IngredientFilter from './components/IngredientFilter'
 
 function App() {
 
@@ -17,6 +18,14 @@ function App() {
     const names = recipes.flatMap(recipe => recipe.ingredients.map(ingredient => ingredient.name));
     return [...new Set(names)];
   }, [recipes])
+
+  function toggleIngredient(name) {
+    setSelectedIngredients(prev => 
+      prev.includes(name) ? prev.filter(i => i !==name)
+      : [...prev, name]
+    )
+
+  }
 
   const filteredRecipes = useMemo(() => {
     const selectedSet = new Set(selectedIngredients)
@@ -41,7 +50,10 @@ function App() {
   return (
     <div>
       <div className= "new-recipe-form">
-        <NewRecipeForm onAddRecipe = {addRecipe} allIngredientNames ={allIngredientNames}/>
+        <NewRecipeForm onAddRecipe = {addRecipe} allIngredientNames ={allIngredientNames} />
+      </div>
+      <div className='ingredient-filter'>
+        <IngredientFilter allIngredientNames ={allIngredientNames} selectedIngredients ={selectedIngredients} toggleIngredient = {toggleIngredient}/>
       </div>
       <div className="recipe-grid">
         {filteredRecipes.map((item) => (
