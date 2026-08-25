@@ -1,23 +1,23 @@
-html {
-     /* background-color: black;
-    color: white; */
+:root {
+  --color-paper: #FAF7F0;
+  --color-ink: #2B2B2B;
+  --color-coral: #FF6B5E;
+  --color-teal: #4DA3A0;
+  --color-mustard: #F4B740;
+  --color-sage: #6FB07F;
+
+  --font-display: 'Patrick Hand', cursive;
+  --font-body: 'Inter', sans-serif;
 }
 
-.recipe-grid {
-    display: flex;
-    gap: 20px;
+body {
+  background-color: var(--color-paper);
+  color: var(--color-ink);
+  font-family: var(--font-body);
+  margin: 0;
 }
 
-.recipe-card {
-    display: flex;
-    flex-direction: column;
-    padding: 5px;
-    border: solid white;
-    width: 400px;
-}
-
-form {
-    display: flex;
-    flex-direction: column;
-    width: 50%;
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 400;
 }

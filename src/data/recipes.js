@@ -55,6 +55,39 @@ let recipes = [
         ],
         img: '',
     },
+
+    {
+    id: 'Spaghetti-Bolognese',
+    title: 'Spaghetti Bolognese',
+    servings: 4,
+    prepTime: '15 mins',
+    cookTime: '50 mins',
+    ingredients: [
+        { name: 'Beef Mince', quantity: 500, unit: 'grams', notes: '' },
+        { name: 'Spaghetti', quantity: 400, unit: 'grams', notes: '' },
+        { name: 'Garlic cloves', quantity: 3, unit: 'pieces', notes: '' },
+        { name: 'Brown Onion', quantity: 1, unit: 'piece', notes: 'Diced' },
+        { name: 'Carrot', quantity: 2, unit: 'piece', notes: 'Grate carrot' },
+        { name: 'Pasta Sauce', quantity: 500, unit: 'grams', notes: '' },
+    ],
+    instructions: [
+        'Dice onions, grate carrot and thinly dice garlic cloves',
+        'Add olive oil to a pot (medium to high heat)',
+        'Add vegetables and toss around as to not burn the garlic',
+        'Once onion has browned slightly, add the beef mince',
+        'Break up mince in the pot and ensure all is getting equal heat',
+        'Once the meat has browned, continue in the pot for 3 more minutes to evaporate water from the pan',
+        'Lower pan heat and add Pasta sauce to the pan',
+        'Ensure heat is not too high (You want to see occasionally bubbles in the sauce every few seconds - not constantly)',
+        'Simmer for 20 mins',
+        'Boil water in another pot',
+        'Add salt to the water and then put your spaghetti in the pot',
+        'Cook pasta for 12 minutes or as directed for your choice of pasta',
+        'Strain pasta and serve in a bowl',
+        'Serve the bolognese on top of the pasta'
+    ],
+    img: ''
+}
     // {
     //     id: '',
     //     title: '',

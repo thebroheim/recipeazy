@@ -12,7 +12,7 @@ function App() {
 
   const [recipes, setRecipes] = useState(initialRecipes)
 
-  const [selectedIngredients, setSelectedIngredients] = useState(["Chicken"])
+  const [selectedIngredients, setSelectedIngredients] = useState([])
 
   const allIngredientNames = useMemo(() => {
     const names = recipes.flatMap(recipe => recipe.ingredients.map(ingredient => ingredient.name));

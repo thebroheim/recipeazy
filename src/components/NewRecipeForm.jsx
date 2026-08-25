@@ -91,19 +91,19 @@ function handleSubmit(e) {
             <input name="ingredients" placeholder= "notes" value={ingredient.notes} onChange = {(e) => handleIngredientsChange(index, "notes", e.target.value)} type="text"/>
             </div>
         })}
-        <button type= "button" onClick={handleAddIngredient}>Add Ingredient</button>
+        <button className="add-btn" type= "button" onClick={handleAddIngredient}>Add Ingredient</button>
         
 
         <label>Instructions</label>
         {formData.instructions.map((instruction, key)=>{
             return <input name="instruction" key={key} value={instruction} onChange = {(e) => handleInstructionsChange(key, e.target.value)} type="text"/>
         })}
-        <button type= "button" onClick={handleAddInstruction}>Add Step</button>
+        <button className="add-btn" type= "button" onClick={handleAddInstruction}>Add Step</button>
         
     
         
 
-        <input type= "submit"/>
+        <button type="submit" className="submit-btn">Submit Recipe</button>
     </form>
 
 }

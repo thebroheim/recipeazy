@@ -4,6 +4,7 @@ const RecipeCard = ({recipe}) => {
     return (
     <div className ="recipe-card">
         <h3>{recipe.title}</h3>
+        <p>Match: {Math.round(recipe.score * 100)}%</p>
         <p>Prep: {recipe.prepTime}</p>
         <p>Cook: {recipe.cookTime}</p>
         <h4>Ingredients</h4>
